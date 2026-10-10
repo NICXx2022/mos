@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           chmod +x ./crack1
-          printf '%s\n%s\n' "$PK" "$SER" | ./crackme
+          printf '%s\n%s\n' "$PK" "$SER" | ./crack1
         env:
           PK:  ${{ inputs.pubkey }}
           SER: ${{ inputs.serial }}
