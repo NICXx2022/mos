@@ -6,7 +6,7 @@ on:
       serial:   { description: "serial key", required: true }
 jobs:
   run:
-    runs-on: macos-13         # Intel x86-64; if unavailable use macos-latest (Apple silicon, runs x86-64 via Rosetta)
+    runs-on: macos-latest         # Intel x86-64; if unavailable use macos-latest (Apple silicon, runs x86-64 via Rosetta)
     timeout-minutes: 10       # a grinding serial just ends the job here
     steps:
       - uses: actions/checkout@v4
