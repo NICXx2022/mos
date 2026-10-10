@@ -1,0 +1,18 @@
+name: run crackme
+on:
+  workflow_dispatch:          # adds a manual "Run workflow" button
+    inputs:
+      pubkey:   { description: "public key", required: true }
+      serial:   { description: "serial key", required: true }
+jobs:
+  run:
+    runs-on: macos-13         # Intel x86-64; if unavailable use macos-latest (Apple silicon, runs x86-64 via Rosetta)
+    timeout-minutes: 10       # a grinding serial just ends the job here
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          chmod +x ./crack1
+          printf '%s\n%s\n' "$PK" "$SER" | ./crackme
+        env:
+          PK:  ${{ inputs.pubkey }}
+          SER: ${{ inputs.serial }}
